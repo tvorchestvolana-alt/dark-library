@@ -58,10 +58,11 @@ function createBookCard(book, showNewBadge = false) {
         </div>
 
         <a
-          class="download-btn"
-          href="${book.file}"
-          download
-        >
+  class="download-btn"
+  href="${book.file}"
+  target="_blank"
+  rel="noopener"
+>
           ↓ Скачать EPUB
         </a>
 
@@ -159,10 +160,11 @@ function createHitSlide(book, index) {
           </div>
 
           <a
-            class="download-btn hit-download"
-            href="${book.file}"
-            download
-          >
+  class="download-btn hit-download"
+  href="${book.file}"
+  target="_blank"
+  rel="noopener"
+>
             ↓ Скачать EPUB
           </a>
 
