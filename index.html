@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
   <title>LIBRIS BOOKS</title>
 
   <style>
+
     * {
       margin: 0;
       padding: 0;
@@ -15,21 +21,20 @@
 
     :root {
       --bg: #090507;
-      --bg-soft: #11080d;
+      --bg2: #11080d;
       --card: #170b10;
-      --card-light: #211019;
+      --card2: #201018;
 
-      --cherry-dark: #4a0a1c;
-      --cherry: #7d1630;
-      --cherry-light: #b93658;
-      --wine: #5f1025;
+      --wine-dark: #430817;
+      --wine: #75142d;
+      --wine-light: #b93658;
 
-      --cream: #f3e8e4;
-      --text: #eadadd;
-      --muted: #a98f96;
+      --cream: #f4e8e4;
+      --text: #ead9dd;
+      --muted: #aa9097;
 
-      --border: rgba(185, 54, 88, 0.22);
-      --border-strong: rgba(185, 54, 88, 0.5);
+      --border: rgba(185, 54, 88, .22);
+      --border-strong: rgba(185, 54, 88, .55);
     }
 
     html {
@@ -38,678 +43,1326 @@
 
     body {
       min-height: 100vh;
+
       background:
-        radial-gradient(circle at 80% 5%, rgba(125,22,48,.16), transparent 28%),
-        radial-gradient(circle at 5% 40%, rgba(74,10,28,.14), transparent 30%),
+        radial-gradient(
+          circle at 85% 5%,
+          rgba(117, 20, 45, .18),
+          transparent 25%
+        ),
+        radial-gradient(
+          circle at 5% 45%,
+          rgba(90, 10, 35, .12),
+          transparent 30%
+        ),
         var(--bg);
+
       color: var(--text);
-      font-family: Arial, sans-serif;
+
+      font-family:
+        Arial,
+        sans-serif;
     }
 
     a {
       color: inherit;
     }
 
-    /* ШАПКА */
+
+    /* =========================
+       ШАПКА
+    ========================= */
 
     header {
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 1000;
+
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 22px;
-      padding: 17px 6%;
-      background: rgba(9,5,7,.94);
-      backdrop-filter: blur(16px);
+
+      gap: 20px;
+
+      padding: 16px 6%;
+
+      background: rgba(9, 5, 7, .94);
+
+      backdrop-filter: blur(15px);
+
       border-bottom: 1px solid var(--border);
     }
 
+
     .logo {
-      font-family: Georgia, serif;
-      font-size: 27px;
-      font-weight: bold;
       white-space: nowrap;
+
       color: var(--cream);
+
+      font-family:
+        Georgia,
+        serif;
+
+      font-size: 27px;
+
+      font-weight: bold;
     }
 
     .logo span {
-      color: var(--cherry-light);
+      color: var(--wine-light);
     }
+
 
     nav {
       display: flex;
-      align-items: center;
-      gap: 24px;
+      gap: 23px;
     }
+
 
     nav a {
       color: var(--muted);
+
       text-decoration: none;
+
       font-size: 13px;
-      transition: .2s;
     }
+
 
     nav a:hover {
-      color: var(--cherry-light);
+      color: var(--wine-light);
     }
 
+
     .header-search {
-      width: 230px;
+      width: 220px;
+
       padding: 11px 14px;
+
       color: white;
+
       background: #11090d;
-      border: 1px solid var(--border);
+
+      border:
+        1px solid
+        var(--border);
+
       border-radius: 9px;
+
       outline: none;
     }
 
+
     .header-search:focus {
-      border-color: var(--cherry-light);
+      border-color:
+        var(--wine-light);
     }
 
-    /* ГЛАВНЫЙ ЭКРАН */
+
+
+    /* =========================
+       ГЛАВНЫЙ ЭКРАН
+    ========================= */
 
     .hero {
-      min-height: 580px;
+      position: relative;
+
+      min-height: 550px;
+
       display: flex;
       align-items: center;
-      padding: 95px 7% 85px;
-      position: relative;
+
       overflow: hidden;
-      border-bottom: 1px solid var(--border);
+
+      padding:
+        90px 7%
+        75px;
+
+      border-bottom:
+        1px solid
+        var(--border);
     }
 
-    .hero::before {
-      content: "";
-      position: absolute;
-      right: 8%;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 320px;
-      height: 440px;
-      border-radius: 50%;
-      background:
-        radial-gradient(circle, rgba(185,54,88,.20), transparent 60%);
-      filter: blur(5px);
-    }
 
     .hero::after {
       content: "☾";
+
       position: absolute;
-      right: 10%;
-      top: 40px;
-      font-family: Georgia, serif;
-      font-size: 420px;
-      color: rgba(125,22,48,.05);
-      transform: rotate(-8deg);
+
+      right: 7%;
+      top: 20px;
+
+      color:
+        rgba(
+          185,
+          54,
+          88,
+          .055
+        );
+
+      font-family:
+        Georgia,
+        serif;
+
+      font-size: 430px;
+
+      transform:
+        rotate(-8deg);
+
       pointer-events: none;
     }
 
+
     .hero-content {
       position: relative;
+
       z-index: 2;
-      max-width: 750px;
+
+      max-width: 760px;
     }
+
 
     .eyebrow {
       margin-bottom: 18px;
-      color: var(--cherry-light);
-      text-transform: uppercase;
-      letter-spacing: 4px;
+
+      color: var(--wine-light);
+
       font-size: 11px;
+
+      letter-spacing: 4px;
+
+      text-transform: uppercase;
     }
+
 
     h1 {
-      max-width: 750px;
+      max-width: 740px;
+
       margin-bottom: 24px;
-      font-family: Georgia, serif;
-      font-size: clamp(48px, 8vw, 90px);
-      line-height: .95;
-      font-weight: normal;
+
       color: var(--cream);
+
+      font-family:
+        Georgia,
+        serif;
+
+      font-size:
+        clamp(
+          48px,
+          8vw,
+          90px
+        );
+
+      font-weight: normal;
+
+      line-height: .96;
     }
+
 
     h1 em {
-      color: var(--cherry-light);
-      font-style: italic;
+      color: var(--wine-light);
     }
 
+
     .hero-text {
-      max-width: 590px;
-      margin-bottom: 34px;
+      max-width: 610px;
+
+      margin-bottom: 32px;
+
       color: var(--muted);
-      font-size: 17px;
+
+      font-size: 16px;
+
       line-height: 1.8;
     }
 
+
     .hero-buttons {
       display: flex;
+
       gap: 12px;
+
       flex-wrap: wrap;
     }
 
+
     .btn {
       display: inline-flex;
+
       align-items: center;
+
       justify-content: center;
-      padding: 14px 22px;
+
+      padding:
+        14px
+        22px;
+
       border-radius: 8px;
+
       text-decoration: none;
+
       font-size: 13px;
+
       transition: .25s;
     }
 
+
     .btn-main {
       color: white;
-      background: linear-gradient(135deg, var(--cherry), var(--cherry-light));
-      box-shadow: 0 10px 30px rgba(125,22,48,.22);
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--wine),
+          var(--wine-light)
+        );
+
+      box-shadow:
+        0 10px 35px
+        rgba(117, 20, 45, .25);
     }
+
 
     .btn-main:hover {
-      transform: translateY(-2px);
+      transform:
+        translateY(-2px);
     }
+
 
     .btn-outline {
-      border: 1px solid var(--border);
+      border:
+        1px solid
+        var(--border);
+
       color: var(--cream);
-      background: rgba(255,255,255,.02);
+
+      background:
+        rgba(
+          255,
+          255,
+          255,
+          .02
+        );
     }
 
-    /* СТАТИСТИКА */
+
+
+    /* =========================
+       СТАТИСТИКА
+    ========================= */
 
     .stats {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      background: var(--bg-soft);
-      border-bottom: 1px solid var(--border);
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      background: var(--bg2);
+
+      border-bottom:
+        1px solid
+        var(--border);
     }
 
+
     .stat {
-      padding: 34px 20px;
+      padding: 32px 20px;
+
       text-align: center;
-      border-right: 1px solid var(--border);
+
+      border-right:
+        1px solid
+        var(--border);
     }
+
 
     .stat:last-child {
       border-right: none;
     }
 
+
     .stat strong {
       display: block;
+
       margin-bottom: 7px;
-      color: var(--cherry-light);
-      font-family: Georgia, serif;
+
+      color: var(--wine-light);
+
+      font-family:
+        Georgia,
+        serif;
+
       font-size: 30px;
     }
 
+
     .stat span {
       color: var(--muted);
+
       font-size: 12px;
     }
 
-    /* СЕКЦИИ */
+
+
+    /* =========================
+       ОБЩЕЕ
+    ========================= */
 
     section {
-      padding: 68px 6%;
+      padding:
+        68px 6%;
     }
+
 
     .section-head {
       display: flex;
+
       align-items: end;
-      justify-content: space-between;
+
+      justify-content:
+        space-between;
+
       gap: 20px;
-      margin-bottom: 30px;
+
+      margin-bottom: 28px;
     }
+
 
     .section-head h2 {
       color: var(--cream);
-      font-family: Georgia, serif;
-      font-size: 33px;
+
+      font-family:
+        Georgia,
+        serif;
+
+      font-size: 34px;
+
       font-weight: normal;
     }
 
+
     .section-head p {
       margin-top: 8px;
+
       color: var(--muted);
+
       font-size: 13px;
     }
+
 
     .section-head a {
-      color: var(--cherry-light);
+      color: var(--wine-light);
+
       text-decoration: none;
+
       font-size: 13px;
     }
 
-    /* КНИГИ */
+
+
+    /* =========================
+       ХИТ БИБЛИОТЕКИ
+    ========================= */
+
+    .hit-section {
+      padding-top: 60px;
+    }
+
+
+    .hit-card {
+      position: relative;
+
+      display: grid;
+
+      grid-template-columns:
+        minmax(220px, 330px)
+        1fr;
+
+      gap: 50px;
+
+      align-items: center;
+
+      overflow: hidden;
+
+      padding: 45px;
+
+      background:
+        radial-gradient(
+          circle at 15% 50%,
+          rgba(185, 54, 88, .28),
+          transparent 35%
+        ),
+        radial-gradient(
+          circle at 90% 20%,
+          rgba(117, 20, 45, .22),
+          transparent 30%
+        ),
+        linear-gradient(
+          135deg,
+          #17070d,
+          #0c0608
+        );
+
+      border:
+        1px solid
+        rgba(
+          185,
+          54,
+          88,
+          .42
+        );
+
+      border-radius: 22px;
+
+      box-shadow:
+        0 25px 70px
+        rgba(
+          0,
+          0,
+          0,
+          .35
+        );
+    }
+
+
+    .hit-card::after {
+      content: "✦";
+
+      position: absolute;
+
+      right: -35px;
+      top: -65px;
+
+      color:
+        rgba(
+          185,
+          54,
+          88,
+          .06
+        );
+
+      font-size: 330px;
+
+      pointer-events: none;
+    }
+
+
+    .hit-cover {
+      position: relative;
+
+      z-index: 2;
+
+      width: 100%;
+
+      aspect-ratio: 2 / 3;
+
+      overflow: hidden;
+
+      border-radius: 13px;
+
+      box-shadow:
+        0 20px 60px
+        rgba(
+          0,
+          0,
+          0,
+          .6
+        );
+
+      border:
+        1px solid
+        rgba(
+          255,
+          255,
+          255,
+          .06
+        );
+    }
+
+
+    .hit-cover img {
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+
+      display: block;
+    }
+
+
+    .hit-content {
+      position: relative;
+
+      z-index: 2;
+    }
+
+
+    .hit-label {
+      display: inline-block;
+
+      margin-bottom: 17px;
+
+      padding:
+        7px 11px;
+
+      color: #ffb0c3;
+
+      background:
+        rgba(
+          185,
+          54,
+          88,
+          .16
+        );
+
+      border:
+        1px solid
+        rgba(
+          185,
+          54,
+          88,
+          .4
+        );
+
+      border-radius: 30px;
+
+      font-size: 10px;
+
+      font-weight: bold;
+
+      letter-spacing: 2px;
+
+      text-transform: uppercase;
+    }
+
+
+    .hit-title {
+      margin-bottom: 9px;
+
+      color: var(--cream);
+
+      font-family:
+        Georgia,
+        serif;
+
+      font-size:
+        clamp(
+          36px,
+          6vw,
+          62px
+        );
+
+      font-weight: normal;
+
+      line-height: 1.05;
+    }
+
+
+    .hit-author {
+      margin-bottom: 7px;
+
+      color: #d6adb7;
+
+      font-size: 15px;
+    }
+
+
+    .hit-series {
+      margin-bottom: 22px;
+
+      color: var(--muted);
+
+      font-size: 12px;
+    }
+
+
+    .hit-text {
+      max-width: 700px;
+
+      margin-bottom: 20px;
+
+      color: var(--muted);
+
+      font-size: 14px;
+
+      line-height: 1.7;
+    }
+
+
+
+    /* =========================
+       КНИЖНЫЕ КАРТОЧКИ
+    ========================= */
 
     .books-grid {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
+
+      grid-template-columns:
+        repeat(5, 1fr);
+
       gap: 18px;
     }
 
+
     .book-card {
       overflow: hidden;
+
       background:
-        linear-gradient(180deg, rgba(125,22,48,.04), transparent 25%),
+        linear-gradient(
+          180deg,
+          rgba(117, 20, 45, .06),
+          transparent 30%
+        ),
         var(--card);
-      border: 1px solid var(--border);
+
+      border:
+        1px solid
+        var(--border);
+
       border-radius: 13px;
+
       transition: .25s;
     }
 
+
     .book-card:hover {
-      transform: translateY(-5px);
-      border-color: var(--border-strong);
+      transform:
+        translateY(-5px);
+
+      border-color:
+        var(--border-strong);
     }
+
 
     .book-cover {
       position: relative;
+
       aspect-ratio: 2 / 3;
+
       overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background:
-        radial-gradient(circle at center, rgba(185,54,88,.20), transparent 45%),
-        linear-gradient(150deg, #260d17, #080506);
+
+      background: #13080d;
     }
+
 
     .book-cover img {
       width: 100%;
       height: 100%;
+
       object-fit: cover;
+
       display: block;
     }
 
-    .cover-placeholder {
-      font-family: Georgia, serif;
-      font-size: 58px;
-      color: var(--cherry-light);
-      opacity: .7;
-    }
 
-    .new-badge {
+    .badge {
       position: absolute;
+
       top: 10px;
       left: 10px;
-      padding: 6px 9px;
-      background: rgba(9,5,7,.88);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      color: var(--cherry-light);
+
+      padding:
+        6px
+        9px;
+
+      color: #ffd2dc;
+
+      background:
+        rgba(
+          8,
+          4,
+          6,
+          .88
+        );
+
+      border:
+        1px solid
+        var(--border);
+
+      border-radius: 30px;
+
       font-size: 9px;
+
       text-transform: uppercase;
+
       letter-spacing: 1px;
     }
+
 
     .book-content {
       padding: 16px;
     }
 
+
     .book-title {
       margin-bottom: 6px;
+
       color: var(--cream);
-      font-family: Georgia, serif;
+
+      font-family:
+        Georgia,
+        serif;
+
       font-size: 17px;
+
       line-height: 1.3;
     }
 
+
     .book-author {
+      margin-bottom: 5px;
+
+      color: var(--muted);
+
+      font-size: 12px;
+    }
+
+
+    .book-series {
       margin-bottom: 12px;
-      color: var(--muted);
-      font-size: 12px;
-    }
 
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-bottom: 14px;
-    }
+      color: #7f6970;
 
-    .tag {
-      padding: 5px 8px;
-      color: #d991a4;
-      background: rgba(125,22,48,.15);
-      border: 1px solid rgba(185,54,88,.16);
-      border-radius: 30px;
-      font-size: 9px;
-    }
-
-    .download-btn {
-      width: 100%;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 7px;
-      padding: 11px 12px;
-      color: var(--cream);
-      background: linear-gradient(
-        135deg,
-        rgba(125,22,48,.32),
-        rgba(185,54,88,.16)
-      );
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      text-decoration: none;
-      font-size: 12px;
-      transition: .2s;
-    }
-
-    .download-btn:hover {
-      background: linear-gradient(
-        135deg,
-        var(--cherry),
-        var(--cherry-light)
-      );
-      color: white;
-    }
-
-    /* ЖАНРЫ */
-
-    .genres-grid {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 14px;
-    }
-
-    .genre-card {
-      min-height: 145px;
-      padding: 22px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      background:
-        radial-gradient(circle at 80% 10%, rgba(185,54,88,.08), transparent 40%),
-        var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      cursor: pointer;
-      transition: .25s;
-    }
-
-    .genre-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--cherry);
-    }
-
-    .genre-icon {
-      color: var(--cherry-light);
-      font-size: 26px;
-    }
-
-    .genre-card h3 {
-      margin-top: 25px;
-      color: var(--cream);
-      font-family: Georgia, serif;
-      font-size: 17px;
-    }
-
-    .genre-card p {
-      margin-top: 6px;
-      color: var(--muted);
-      font-size: 11px;
-    }
-
-    /* СТОИТ ПОЧИТАТЬ */
-
-    .featured {
-      display: grid;
-      grid-template-columns: 240px 1fr;
-      gap: 35px;
-      align-items: center;
-      padding: 30px;
-      background:
-        radial-gradient(circle at 90% 20%, rgba(125,22,48,.20), transparent 35%),
-        var(--card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-    }
-
-    .featured-cover {
-      aspect-ratio: 2 / 3;
-      overflow: hidden;
-      border-radius: 10px;
-      background:
-        radial-gradient(circle, rgba(185,54,88,.2), transparent 50%),
-        #0a0507;
-      border: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--cherry-light);
-      font-family: Georgia, serif;
-      font-size: 70px;
-    }
-
-    .featured-cover img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .featured-label {
-      margin-bottom: 14px;
-      color: var(--cherry-light);
-      text-transform: uppercase;
-      letter-spacing: 3px;
       font-size: 10px;
     }
 
-    .featured h3 {
-      margin-bottom: 8px;
-      color: var(--cream);
-      font-family: Georgia, serif;
-      font-size: 35px;
-      font-weight: normal;
+
+
+    /* =========================
+       ТРОПЫ
+    ========================= */
+
+    .tags {
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 6px;
+
+      margin-bottom: 15px;
     }
 
-    .featured-author {
-      margin-bottom: 20px;
-      color: var(--muted);
+
+    .tag {
+      padding:
+        5px
+        8px;
+
+      color: #d990a3;
+
+      background:
+        rgba(
+          117,
+          20,
+          45,
+          .15
+        );
+
+      border:
+        1px solid
+        rgba(
+          185,
+          54,
+          88,
+          .16
+        );
+
+      border-radius: 30px;
+
+      font-size: 9px;
+    }
+
+
+
+    /* =========================
+       СКАЧАТЬ
+    ========================= */
+
+    .download-btn {
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      gap: 7px;
+
+      width: 100%;
+
+      padding:
+        11px
+        13px;
+
+      color: var(--cream);
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(117, 20, 45, .36),
+          rgba(185, 54, 88, .14)
+        );
+
+      border:
+        1px solid
+        var(--border);
+
+      border-radius: 8px;
+
+      text-decoration: none;
+
+      font-size: 12px;
+
+      transition: .2s;
+    }
+
+
+    .download-btn:hover {
+      color: white;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--wine),
+          var(--wine-light)
+        );
+    }
+
+
+    .hit-download {
+      width: auto;
+
+      padding:
+        14px
+        25px;
+
       font-size: 13px;
     }
 
-    .featured-text {
-      max-width: 650px;
-      margin-bottom: 20px;
+
+
+    /* =========================
+       ЖАНРЫ
+    ========================= */
+
+    .genres-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(5, 1fr);
+
+      gap: 14px;
+    }
+
+
+    .genre-card {
+      min-height: 145px;
+
+      padding: 22px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      justify-content:
+        space-between;
+
+      background:
+        radial-gradient(
+          circle at 80% 10%,
+          rgba(185, 54, 88, .09),
+          transparent 40%
+        ),
+        var(--card);
+
+      border:
+        1px solid
+        var(--border);
+
+      border-radius: 12px;
+
+      cursor: pointer;
+
+      transition: .25s;
+    }
+
+
+    .genre-card:hover {
+      transform:
+        translateY(-4px);
+
+      border-color:
+        var(--wine);
+    }
+
+
+    .genre-icon {
+      color: var(--wine-light);
+
+      font-size: 25px;
+    }
+
+
+    .genre-card h3 {
+      margin-top: 25px;
+
+      color: var(--cream);
+
+      font-family:
+        Georgia,
+        serif;
+
+      font-size: 17px;
+    }
+
+
+    .genre-card p {
+      margin-top: 6px;
+
       color: var(--muted);
-      font-size: 14px;
-      line-height: 1.8;
+
+      font-size: 11px;
+
+      line-height: 1.5;
     }
 
-    .featured .download-btn {
-      width: auto;
-      padding-left: 20px;
-      padding-right: 20px;
+
+
+    /* =========================
+       СТОИТ ПОЧИТАТЬ
+    ========================= */
+
+    #featured {
+      display: none;
     }
 
-    /* КАТАЛОГ */
+
+
+    /* =========================
+       КАТАЛОГ
+    ========================= */
 
     .catalog-controls {
       display: flex;
-      gap: 12px;
+
+      gap: 10px;
+
       flex-wrap: wrap;
+
       margin-bottom: 28px;
     }
 
+
     .catalog-search {
       flex: 1;
+
       min-width: 220px;
-      padding: 13px 15px;
+
+      padding:
+        13px
+        15px;
+
       color: white;
-      background: var(--bg-soft);
-      border: 1px solid var(--border);
+
+      background: var(--bg2);
+
+      border:
+        1px solid
+        var(--border);
+
       border-radius: 9px;
+
       outline: none;
     }
 
-    .catalog-search:focus {
-      border-color: var(--cherry-light);
-    }
 
     .filter-btn {
-      padding: 11px 14px;
-      border: 1px solid var(--border);
-      border-radius: 30px;
-      background: transparent;
+      padding:
+        11px
+        14px;
+
       color: var(--muted);
+
+      background: transparent;
+
+      border:
+        1px solid
+        var(--border);
+
+      border-radius: 30px;
+
       cursor: pointer;
-      transition: .2s;
+
       font-size: 11px;
     }
 
-    .filter-btn:hover,
-    .filter-btn.active {
+
+    .filter-btn.active,
+    .filter-btn:hover {
       color: white;
-      background: var(--cherry);
-      border-color: var(--cherry);
+
+      background: var(--wine);
+
+      border-color: var(--wine);
     }
 
-    /* ПОДВАЛ */
+
+
+    /* =========================
+       НЕТ РЕЗУЛЬТАТОВ
+    ========================= */
+
+    .empty {
+      display: none;
+
+      grid-column:
+        1 / -1;
+
+      padding: 50px;
+
+      color: var(--muted);
+
+      text-align: center;
+    }
+
+
+
+    /* =========================
+       ПОДВАЛ
+    ========================= */
 
     footer {
-      padding: 35px 6%;
       display: flex;
-      justify-content: space-between;
+
+      justify-content:
+        space-between;
+
       gap: 20px;
+
+      padding:
+        35px 6%;
+
+      color: #725c63;
+
       background: #060405;
-      border-top: 1px solid var(--border);
-      color: #735d64;
+
+      border-top:
+        1px solid
+        var(--border);
+
       font-size: 11px;
     }
 
-    /* МОБИЛЬНАЯ ВЕРСИЯ */
 
-    @media (max-width: 1000px) {
+
+    /* =========================
+       ПЛАНШЕТ
+    ========================= */
+
+    @media (
+      max-width: 1050px
+    ) {
+
       .books-grid {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns:
+          repeat(3, 1fr);
       }
 
       .genres-grid {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns:
+          repeat(3, 1fr);
       }
+
     }
 
-    @media (max-width: 780px) {
+
+
+    /* =========================
+       ТЕЛЕФОН
+    ========================= */
+
+    @media (
+      max-width: 780px
+    ) {
+
       header {
         flex-wrap: wrap;
-        padding: 14px 5%;
+
+        padding:
+          14px 5%;
       }
 
+
       nav {
-        width: 100%;
         order: 3;
+
+        width: 100%;
+
         overflow-x: auto;
+
         gap: 18px;
-        padding-top: 4px;
+
+        padding-top: 5px;
       }
+
 
       nav a {
         white-space: nowrap;
       }
 
+
       .header-search {
         width: 145px;
       }
 
+
       .hero {
-        min-height: 500px;
-        padding: 75px 6% 65px;
+        min-height: 490px;
+
+        padding:
+          70px 6%
+          60px;
       }
+
 
       .hero::after {
-        font-size: 260px;
-        right: -55px;
+        right: -65px;
+
+        font-size: 270px;
       }
 
+
       .stats {
-        grid-template-columns: 1fr;
+        grid-template-columns:
+          1fr;
       }
+
 
       .stat {
         border-right: none;
-        border-bottom: 1px solid var(--border);
+
+        border-bottom:
+          1px solid
+          var(--border);
       }
+
 
       .stat:last-child {
         border-bottom: none;
       }
 
-      .books-grid {
-        display: flex;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        padding-bottom: 14px;
+
+      .hit-card {
+        grid-template-columns:
+          1fr;
+
+        gap: 28px;
+
+        padding: 24px;
       }
 
-      .book-card {
-        min-width: 190px;
-        scroll-snap-align: start;
+
+      .hit-cover {
+        width: min(
+          100%,
+          290px
+        );
+
+        margin:
+          0 auto;
       }
+
+
+      .hit-title {
+        font-size: 40px;
+      }
+
+
+      .books-grid {
+        display: flex;
+
+        overflow-x: auto;
+
+        padding-bottom: 15px;
+
+        scroll-snap-type:
+          x mandatory;
+      }
+
+
+      .book-card {
+        min-width: 205px;
+
+        scroll-snap-align:
+          start;
+      }
+
 
       .genres-grid {
         display: flex;
+
         overflow-x: auto;
+
         padding-bottom: 12px;
       }
 
+
       .genre-card {
-        min-width: 180px;
+        min-width: 185px;
       }
 
-      .featured {
-        grid-template-columns: 1fr;
-      }
-
-      .featured-cover {
-        max-width: 260px;
-        width: 100%;
-        margin: 0 auto;
-      }
-
-      .featured h3 {
-        font-size: 28px;
-      }
     }
 
-    @media (max-width: 500px) {
+
+
+    @media (
+      max-width: 500px
+    ) {
+
       .logo {
-        font-size: 22px;
+        font-size: 21px;
       }
 
+
       h1 {
-        font-size: 52px;
+        font-size: 51px;
       }
+
 
       .hero-text {
         font-size: 15px;
       }
 
+
       section {
-        padding: 52px 5%;
+        padding:
+          52px 5%;
       }
+
 
       .section-head {
-        align-items: flex-start;
         flex-direction: column;
+
+        align-items:
+          flex-start;
       }
 
+
       .section-head h2 {
-        font-size: 28px;
+        font-size: 29px;
       }
+
 
       footer {
         flex-direction: column;
       }
+
     }
+
   </style>
 </head>
 
+
 <body>
+
 
 <header>
 
@@ -717,12 +1370,27 @@
     LIBRIS <span>BOOKS</span>
   </div>
 
+
   <nav>
-    <a href="#new">Новинки</a>
-    <a href="#genres">Жанры</a>
-    <a href="#featured">Стоит почитать</a>
-    <a href="#catalog">Каталог</a>
+
+    <a href="#hit">
+      Хит
+    </a>
+
+    <a href="#new">
+      Новинки
+    </a>
+
+    <a href="#genres">
+      Жанры
+    </a>
+
+    <a href="#catalog">
+      Каталог
+    </a>
+
   </nav>
+
 
   <input
     id="headerSearch"
@@ -733,7 +1401,12 @@
 
 </header>
 
+
+
 <main>
+
+
+  <!-- ГЛАВНЫЙ ЭКРАН -->
 
   <section class="hero">
 
@@ -743,24 +1416,41 @@
         Библиотека авторских переводов
       </div>
 
+
       <h1>
-        Истории с <em>тёмной</em> стороны
+        Истории с
+        <em>тёмной</em>
+        стороны
       </h1>
 
+
       <p class="hero-text">
-        Дарк романы, детективы, фэнтези, мафия
-        и тёмные романтические комедии.
-        Выбирай книгу, скачивай файл и читай там,
-        где тебе удобно.
+
+        Дарк романы, детективы,
+        фэнтези, мафия и тёмные
+        романтические комедии.
+
+        Выбирай книгу, скачивай
+        EPUB и читай там, где
+        тебе удобно.
+
       </p>
+
 
       <div class="hero-buttons">
 
-        <a href="#catalog" class="btn btn-main">
+        <a
+          href="#catalog"
+          class="btn btn-main"
+        >
           Смотреть каталог →
         </a>
 
-        <a href="#new" class="btn btn-outline">
+
+        <a
+          href="#new"
+          class="btn btn-outline"
+        >
           Новые переводы
         </a>
 
@@ -770,365 +1460,285 @@
 
   </section>
 
+
+
+  <!-- СТАТИСТИКА -->
+
   <div class="stats">
 
     <div class="stat">
-      <strong>40+</strong>
-      <span>переведённых книг</span>
+
+      <strong>
+        40+
+      </strong>
+
+      <span>
+        переведённых книг
+      </span>
+
     </div>
 
-    <div class="stat">
-      <strong>5</strong>
-      <span>жанров</span>
-    </div>
 
     <div class="stat">
-      <strong>∞</strong>
-      <span>историй впереди</span>
+
+      <strong>
+        5
+      </strong>
+
+      <span>
+        жанров
+      </span>
+
+    </div>
+
+
+    <div class="stat">
+
+      <strong>
+        ∞
+      </strong>
+
+      <span>
+        историй впереди
+      </span>
+
     </div>
 
   </div>
+
+
+
+  <!-- ХИТ -->
+
+  <section
+    id="hit"
+    class="hit-section"
+  >
+
+    <div class="section-head">
+
+      <div>
+
+        <h2>
+          Хит библиотеки
+        </h2>
+
+        <p>
+          Книга, которая сейчас
+          заслуживает особого внимания.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div id="hitContainer">
+    </div>
+
+  </section>
+
+
+
+  <!-- НОВИНКИ -->
 
   <section id="new">
 
     <div class="section-head">
 
       <div>
-        <h2>Новинки</h2>
-        <p>Последние добавленные переводы.</p>
+
+        <h2>
+          Новинки
+        </h2>
+
+        <p>
+          Последние добавленные переводы.
+        </p>
+
       </div>
 
-      <a href="#catalog">Весь каталог →</a>
+
+      <a href="#catalog">
+        Весь каталог →
+      </a>
 
     </div>
 
-    <div class="books-grid">
 
-      <article
-        class="book-card"
-        data-title="Название книги"
-        data-author="Имя автора"
-        data-genre="Дарк роман"
-      >
-
-        <div class="book-cover">
-          <span class="cover-placeholder">☾</span>
-          <div class="new-badge">Новинка</div>
-        </div>
-
-        <div class="book-content">
-
-          <h3 class="book-title">
-            Название книги
-          </h3>
-
-          <p class="book-author">
-            Имя автора
-          </p>
-
-          <div class="tags">
-            <span class="tag">Дарк роман</span>
-            <span class="tag">Enemies to lovers</span>
-          </div>
-
-          <a
-            class="download-btn"
-            href="books/book-1.epub"
-            download
-          >
-            ↓ Скачать EPUB
-          </a>
-
-        </div>
-
-      </article>
-
-      <article
-        class="book-card"
-        data-title="Название книги 2"
-        data-author="Имя автора"
-        data-genre="Детектив"
-      >
-
-        <div class="book-cover">
-          <span class="cover-placeholder">⌕</span>
-          <div class="new-badge">Новинка</div>
-        </div>
-
-        <div class="book-content">
-
-          <h3 class="book-title">
-            Название книги 2
-          </h3>
-
-          <p class="book-author">
-            Имя автора
-          </p>
-
-          <div class="tags">
-            <span class="tag">Детектив</span>
-            <span class="tag">Тайна</span>
-          </div>
-
-          <a
-            class="download-btn"
-            href="books/book-2.epub"
-            download
-          >
-            ↓ Скачать EPUB
-          </a>
-
-        </div>
-
-      </article>
-
-      <article
-        class="book-card"
-        data-title="Название книги 3"
-        data-author="Имя автора"
-        data-genre="Мафия"
-      >
-
-        <div class="book-cover">
-          <span class="cover-placeholder">♠</span>
-          <div class="new-badge">Новинка</div>
-        </div>
-
-        <div class="book-content">
-
-          <h3 class="book-title">
-            Название книги 3
-          </h3>
-
-          <p class="book-author">
-            Имя автора
-          </p>
-
-          <div class="tags">
-            <span class="tag">Мафия</span>
-            <span class="tag">Опасный герой</span>
-          </div>
-
-          <a
-            class="download-btn"
-            href="books/book-3.epub"
-            download
-          >
-            ↓ Скачать EPUB
-          </a>
-
-        </div>
-
-      </article>
-
-      <article
-        class="book-card"
-        data-title="Название книги 4"
-        data-author="Имя автора"
-        data-genre="Фэнтези"
-      >
-
-        <div class="book-cover">
-          <span class="cover-placeholder">✦</span>
-          <div class="new-badge">Новинка</div>
-        </div>
-
-        <div class="book-content">
-
-          <h3 class="book-title">
-            Название книги 4
-          </h3>
-
-          <p class="book-author">
-            Имя автора
-          </p>
-
-          <div class="tags">
-            <span class="tag">Фэнтези</span>
-            <span class="tag">Магия</span>
-          </div>
-
-          <a
-            class="download-btn"
-            href="books/book-4.epub"
-            download
-          >
-            ↓ Скачать EPUB
-          </a>
-
-        </div>
-
-      </article>
-
-      <article
-        class="book-card"
-        data-title="Название книги 5"
-        data-author="Имя автора"
-        data-genre="Тёмная романтическая комедия"
-      >
-
-        <div class="book-cover">
-          <span class="cover-placeholder">♥</span>
-          <div class="new-badge">Новинка</div>
-        </div>
-
-        <div class="book-content">
-
-          <h3 class="book-title">
-            Название книги 5
-          </h3>
-
-          <p class="book-author">
-            Имя автора
-          </p>
-
-          <div class="tags">
-            <span class="tag">Тёмная ромкомедия</span>
-            <span class="tag">Чёрный юмор</span>
-          </div>
-
-          <a
-            class="download-btn"
-            href="books/book-5.epub"
-            download
-          >
-            ↓ Скачать EPUB
-          </a>
-
-        </div>
-
-      </article>
-
+    <div
+      class="books-grid"
+      id="newGrid"
+    >
     </div>
 
   </section>
+
+
+
+  <!-- ЖАНРЫ -->
 
   <section id="genres">
 
     <div class="section-head">
 
       <div>
-        <h2>Жанры</h2>
-        <p>Выбери настроение для следующей книги.</p>
+
+        <h2>
+          Жанры
+        </h2>
+
+        <p>
+          Выбери настроение
+                    для следующей книги.
+        </p>
+
       </div>
 
     </div>
+
 
     <div class="genres-grid">
 
-      <div class="genre-card" onclick="filterGenre('Дарк роман')">
-        <div class="genre-icon">♥</div>
-        <div>
-          <h3>Дарк роман</h3>
-          <p>Опасные чувства и запретные истории.</p>
+
+      <div
+        class="genre-card"
+        onclick="selectGenre('Дарк роман')"
+      >
+
+        <div class="genre-icon">
+          ♥
         </div>
-      </div>
-      <div class="genre-card" onclick="filterGenre('Детектив')">
-        <div class="genre-icon">⌕</div>
+
         <div>
-          <h3>Детектив</h3>
-          <p>Тайны, преступления и расследования.</p>
+
+          <h3>
+            Дарк роман
+          </h3>
+
+          <p>
+            Запретные чувства,
+            одержимость и опасная любовь.
+          </p>
+
         </div>
+
       </div>
 
-      <div class="genre-card" onclick="filterGenre('Фэнтези')">
-        <div class="genre-icon">✦</div>
-        <div>
-          <h3>Фэнтези</h3>
-          <p>Магия, другие миры и тёмные сказки.</p>
+
+      <div
+        class="genre-card"
+        onclick="selectGenre('Детектив')"
+      >
+
+        <div class="genre-icon">
+          ⌕
         </div>
+
+        <div>
+
+          <h3>
+            Детектив
+          </h3>
+
+          <p>
+            Тайны, преступления
+            и расследования.
+          </p>
+
+        </div>
+
       </div>
 
-      <div class="genre-card" onclick="filterGenre('Мафия')">
-        <div class="genre-icon">♠</div>
-        <div>
-          <h3>Мафия</h3>
-          <p>Власть, кровь, сделки и опасные мужчины.</p>
+
+      <div
+        class="genre-card"
+        onclick="selectGenre('Фэнтези')"
+      >
+
+        <div class="genre-icon">
+          ✦
         </div>
+
+        <div>
+
+          <h3>
+            Фэнтези
+          </h3>
+
+          <p>
+            Магия, другие миры
+            и опасные сказки.
+          </p>
+
+        </div>
+
       </div>
 
-      <div class="genre-card" onclick="filterGenre('Тёмная романтическая комедия')">
-        <div class="genre-icon">☠</div>
-        <div>
-          <h3>Тёмная романтическая комедия</h3>
-          <p>Романтика, хаос и чёрный юмор.</p>
+
+      <div
+        class="genre-card"
+        onclick="selectGenre('Мафия')"
+      >
+
+        <div class="genre-icon">
+          ♠
         </div>
+
+        <div>
+
+          <h3>
+            Мафия
+          </h3>
+
+          <p>
+            Власть, сделки,
+            кровь и опасность.
+          </p>
+
+        </div>
+
       </div>
+
+
+      <div
+        class="genre-card"
+        onclick="selectGenre('Тёмная романтическая комедия')"
+      >
+
+        <div class="genre-icon">
+          ☠
+        </div>
+
+        <div>
+
+          <h3>
+            Тёмная романтическая комедия
+          </h3>
+
+          <p>
+            Любовь, хаос
+            и чёрный юмор.
+          </p>
+
+        </div>
+
+      </div>
+
 
     </div>
 
   </section>
 
 
-  <!-- СТОИТ ПОЧИТАТЬ -->
+
+  <!-- СТОИТ ПОЧИТАТЬ
+       ПОКА СКРЫТО -->
 
   <section id="featured">
 
-    <div class="section-head">
-
-      <div>
-        <h2>Стоит почитать</h2>
-        <p>Книга, которую хочется выделить прямо сейчас.</p>
-      </div>
-
-    </div>
-
-    <div class="featured">
-
-      <div class="featured-cover">
-        ☾
-      </div>
-
-      <div>
-
-        <div class="featured-label">
-          Выбор библиотеки
-        </div>
-
-        <h3>
-          Название книги
-        </h3>
-
-        <p class="featured-author">
-          Имя автора
-        </p>
-
-        <p class="featured-text">
-          Здесь будет короткая аннотация книги.
-          Можно написать несколько предложений о сюжете,
-          атмосфере и героях, чтобы читатель сразу понял,
-          почему именно эту книгу стоит скачать.
-        </p>
-
-        <div class="tags">
-
-          <span class="tag">
-            Дарк роман
-          </span>
-
-          <span class="tag">
-            Он одержим ею
-          </span>
-
-          <span class="tag">
-            Медленное развитие
-          </span>
-
-        </div>
-
-        <a
-          class="download-btn"
-          href="books/featured-book.epub"
-          download
-        >
-          ↓ Скачать EPUB
-        </a>
-
-      </div>
-
-    </div>
-
   </section>
+
 
 
   <!-- КАТАЛОГ -->
@@ -1138,13 +1748,22 @@
     <div class="section-head">
 
       <div>
-        <h2>Каталог</h2>
-        <p>Все переводы библиотеки.</p>
+
+        <h2>
+          Каталог
+        </h2>
+
+        <p>
+          Все переводы LIBRIS BOOKS.
+        </p>
+
       </div>
 
     </div>
 
+
     <div class="catalog-controls">
+
 
       <input
         id="catalogSearch"
@@ -1153,47 +1772,60 @@
         placeholder="Название книги или автор..."
       >
 
+
       <button
         class="filter-btn active"
-        onclick="filterGenre('Все', this)"
+        data-genre="Все"
+        onclick="setGenre('Все', this)"
       >
         Все
       </button>
 
+
       <button
         class="filter-btn"
-        onclick="filterGenre('Дарк роман', this)"
+        data-genre="Дарк роман"
+        onclick="setGenre('Дарк роман', this)"
       >
         Дарк роман
       </button>
 
+
       <button
         class="filter-btn"
-        onclick="filterGenre('Детектив', this)"
+        data-genre="Детектив"
+        onclick="setGenre('Детектив', this)"
       >
         Детектив
       </button>
 
+
       <button
         class="filter-btn"
-        onclick="filterGenre('Фэнтези', this)"
+        data-genre="Фэнтези"
+        onclick="setGenre('Фэнтези', this)"
       >
         Фэнтези
       </button>
 
+
       <button
         class="filter-btn"
-        onclick="filterGenre('Мафия', this)"
+        data-genre="Мафия"
+        onclick="setGenre('Мафия', this)"
       >
         Мафия
       </button>
 
+
       <button
         class="filter-btn"
-        onclick="filterGenre('Тёмная романтическая комедия', this)"
+        data-genre="Тёмная романтическая комедия"
+        onclick="setGenre('Тёмная романтическая комедия', this)"
       >
         Тёмная ромкомедия
       </button>
+
 
     </div>
 
@@ -1202,206 +1834,22 @@
       class="books-grid"
       id="catalogGrid"
     >
-
-      <article
-        class="book-card catalog-book"
-        data-title="Первая книга"
-        data-author="Автор книги"
-        data-genre="Дарк роман"
-      >
-
-        <div class="book-cover">
-          <span class="cover-placeholder">♥</span>
-        </div>
-
-        <div class="book-content">
-
-          <h3 class="book-title">
-            Первая книга
-          </h3>
-
-          <p class="book-author">
-            Автор книги
-          </p>
-
-          <div class="tags">
-            <span class="tag">Дарк роман</span>
-            <span class="tag">Одержимость</span>
-          </div>
-
-          <a
-            class="download-btn"
-            href="books/book-1.epub"
-            download
-          >
-            ↓ Скачать EPUB
-          </a>
-
-        </div>
-
-      </article>
-
-
-      <article
-        class="book-card catalog-book"
-        data-title="Вторая книга"
-        data-author="Другой автор"
-        data-genre="Детектив"
-      >
-
-        <div class="book-cover">
-          <span class="cover-placeholder">⌕</span>
-        </div>
-
-        <div class="book-content">
-
-          <h3 class="book-title">
-            Вторая книга
-          </h3>
-
-          <p class="book-author">
-            Другой автор
-          </p>
-
-          <div class="tags">
-            <span class="tag">Детектив</span>
-            <span class="tag">Тайна</span>
-          </div>
-
-          <a
-            class="download-btn"
-            href="books/book-2.epub"
-            download
-          >
-            ↓ Скачать EPUB
-          </a>
-
-        </div>
-
-      </article>
-
-
-      <article
-        class="book-card catalog-book"
-        data-title="Третья книга"
-        data-author="Автор"
-        data-genre="Фэнтези"
-      >
-
-        <div class="book-cover">
-          <span class="cover-placeholder">✦</span>
-        </div>
-
-        <div class="book-content">
-
-          <h3 class="book-title">
-            Третья книга
-          </h3>
-
-          <p class="book-author">
-            Автор
-          </p>
-
-          <div class="tags">
-            <span class="tag">Фэнтези</span>
-            <span class="tag">Магия</span>
-          </div>
-
-          <a
-            class="download-btn"
-            href="books/book-3.epub"
-            download
-          >
-            ↓ Скачать EPUB
-          </a>
-
-        </div>
-
-      </article>
-
-
-      <article
-        class="book-card catalog-book"
-        data-title="Четвёртая книга"
-        data-author="Автор"
-        data-genre="Мафия"
-      >
-
-        <div class="book-cover">
-          <span class="cover-placeholder">♠</span>
-        </div>
-
-        <div class="book-content">
-
-          <h3 class="book-title">
-            Четвёртая книга
-          </h3>
-
-          <p class="book-author">
-            Автор
-          </p>
-
-          <div class="tags">
-            <span class="tag">Мафия</span>
-            <span class="tag">Вынужденный брак</span>
-          </div>
-
-          <a
-            class="download-btn"
-            href="books/book-4.epub"
-            download
-          >
-            ↓ Скачать EPUB
-          </a>
-
-        </div>
-
-      </article>
-
-
-      <article
-        class="book-card catalog-book"
-        data-title="Пятая книга"
-        data-author="Автор"
-        data-genre="Тёмная романтическая комедия"
-      >
-
-        <div class="book-cover">
-          <span class="cover-placeholder">☠</span>
-        </div>
-
-        <div class="book-content">
-
-          <h3 class="book-title">
-            Пятая книга
-          </h3>
-
-          <p class="book-author">
-            Автор
-          </p>
-
-          <div class="tags">
-            <span class="tag">Тёмная ромкомедия</span>
-            <span class="tag">Чёрный юмор</span>
-          </div>
-
-          <a
-            class="download-btn"
-            href="books/book-5.epub"
-            download
-          >
-            ↓ Скачать EPUB
-          </a>
-
-        </div>
-
-      </article>
-
     </div>
+
+
+    <div
+      class="empty"
+      id="emptyMessage"
+    >
+      Ничего не найдено.
+    </div>
+
 
   </section>
 
+
 </main>
+
 
 
 <footer>
@@ -1417,61 +1865,358 @@
 </footer>
 
 
+
 <script>
 
-  const catalogSearch =
-    document.getElementById("catalogSearch");
 
-  const headerSearch =
-    document.getElementById("headerSearch");
-
-  const catalogBooks =
-    document.querySelectorAll(".catalog-book");
-
-  let currentGenre = "Все";
+  const books = [
 
 
-  function applyFilters() {
+    {
+      title: "Её запретный учитель",
 
-    const searchText =
-      catalogSearch.value
-        .toLowerCase()
-        .trim();
+      author: "К. Уэбстер",
 
-    catalogBooks.forEach(book => {
+      series: "Серия «Запретный плод» #3",
 
-      const title =
-        book.dataset.title.toLowerCase();
+      genre: "Дарк роман",
 
-      const author =
-        book.dataset.author.toLowerCase();
+      tropes: [
+        "Запретный роман между учителем и ученицей",
+        "Разница в возрасте",
+        "Запятнанная репутация героини",
+        "Заботливый и властный главный герой",
+        "Тайные отношения и тайные встречи",
+        "Динамика похвалы и одобрения",
+        "Её нельзя трогать, но я всё равно её хочу"
+      ],
 
-      const genre =
-        book.dataset.genre;
+      cover: "обложки/Picsart_26-08-18_23-59-16-493.jpg",
 
-      const matchesSearch =
-        title.includes(searchText) ||
-        author.includes(searchText);
+      file: "книги/Её запретный учитель.epub",
 
-      const matchesGenre =
-        currentGenre === "Все" ||
-        genre === currentGenre;
+      newBook: true,
 
-      if (matchesSearch && matchesGenre) {
-        book.style.display = "";
-      } else {
-        book.style.display = "none";
-      }
+      hit: false
+    },
 
-    });
+
+    {
+      title: "Розовые чернила",
+
+      author: "Авина Ст. Грейвс",
+
+      series: "Одиночная книга",
+
+      genre: "Дарк роман",
+
+      tropes: [
+        "Профессор & студентка",
+        "Дарк академия",
+        "Разница в возрасте",
+        "Он — серийный убийца",
+        "Она воссоздаёт его убийства",
+        "Запретный роман",
+        "Семейные тайны",
+        "Дерзкая главная героиня",
+        "Сталкер & сталкер",
+        "Словесные перепалки",
+        "Прикоснись к ней и умрёшь",
+        "Тайное общество"
+      ],
+
+      cover: "обложки/Picsart_26-08-18_23-58-56-098.jpg",
+
+      file: "книги/Розовые чернила.epub",
+
+      newBook: false,
+
+      hit: true
+    }
+
+  ];
+
+
+
+  function createBookCard(book, showNewBadge = false) {
+
+    const tropesHTML =
+      book.tropes
+        .map(
+          trope =>
+            `<span class="tag">${trope}</span>`
+        )
+        .join("");
+
+
+    return `
+
+      <article
+        class="book-card"
+        data-title="${book.title}"
+        data-author="${book.author}"
+        data-genre="${book.genre}"
+      >
+
+        <div class="book-cover">
+
+          <img
+            src="${book.cover}"
+            alt="Обложка книги ${book.title}"
+          >
+
+          ${
+            showNewBadge
+              ? `<div class="badge">Новинка</div>`
+              : ""
+          }
+
+        </div>
+
+
+        <div class="book-content">
+
+          <h3 class="book-title">
+            ${book.title}
+          </h3>
+
+          <p class="book-author">
+            ${book.author}
+          </p>
+
+          <p class="book-series">
+            ${book.series}
+          </p>
+
+          <div class="tags">
+
+            <span class="tag">
+              ${book.genre}
+            </span>
+
+            ${tropesHTML}
+
+          </div>
+
+          <a
+            class="download-btn"
+            href="${book.file}"
+            download
+          >
+            ↓ Скачать EPUB
+          </a>
+
+        </div>
+
+      </article>
+
+    `;
 
   }
 
 
+
+  const newBooks =
+    books.filter(
+      book => book.newBook
+    );
+
+
+  const newGrid =
+    document.getElementById("newGrid");
+
+
+  newGrid.innerHTML =
+    newBooks
+      .map(
+        book =>
+          createBookCard(book, true)
+      )
+      .join("");
+
+
+
+  const hitBook =
+    books.find(
+      book => book.hit
+    );
+
+
+  const hitContainer =
+    document.getElementById("hitContainer");
+
+
+  if (hitBook) {
+
+    const hitTropes =
+      hitBook.tropes
+        .map(
+          trope =>
+            `<span class="tag">${trope}</span>`
+        )
+        .join("");
+
+
+    hitContainer.innerHTML = `
+
+      <div class="hit-card">
+
+        <div class="hit-cover">
+
+          <img
+            src="${hitBook.cover}"
+            alt="Обложка ${hitBook.title}"
+          >
+
+        </div>
+
+
+        <div class="hit-content">
+
+          <div class="hit-label">
+            ★ Хит библиотеки
+          </div>
+
+          <h3 class="hit-title">
+            ${hitBook.title}
+          </h3>
+
+          <p class="hit-author">
+            ${hitBook.author}
+          </p>
+
+          <p class="hit-series">
+            ${hitBook.series}
+          </p>
+
+          <p class="hit-text">
+            Один из самых заметных переводов LIBRIS BOOKS.
+            Если хочется тёмной академии,
+            запретного романа, опасного героя
+            и истории, где оба персонажа
+            совершенно не невинны — стоит начать здесь.
+          </p>
+
+          <div class="tags">
+
+            <span class="tag">
+              ${hitBook.genre}
+            </span>
+
+            ${hitTropes}
+
+          </div>
+
+          <a
+            class="download-btn hit-download"
+            href="${hitBook.file}"
+            download
+          >
+            ↓ Скачать EPUB
+          </a>
+
+        </div>
+
+      </div>
+
+    `;
+
+  }
+
+
+
+  const catalogGrid =
+    document.getElementById("catalogGrid");
+
+
+  const emptyMessage =
+    document.getElementById("emptyMessage");
+
+
+  const catalogSearch =
+    document.getElementById("catalogSearch");
+
+
+  const headerSearch =
+    document.getElementById("headerSearch");
+
+
+  let currentGenre = "Все";
+
+
+  function renderCatalog() {
+
+    const searchText =
+      catalogSearch
+        .value
+        .toLowerCase()
+        .trim();
+
+
+    const filteredBooks =
+      books.filter(book => {
+
+        const searchableText =
+          (
+            book.title
+            + " "
+            + book.author
+            + " "
+            + book.series
+            + " "
+            + book.genre
+            + " "
+            + book.tropes.join(" ")
+          )
+          .toLowerCase();
+
+
+        const matchesSearch =
+          searchableText.includes(searchText);
+
+
+        const matchesGenre =
+          currentGenre === "Все"
+          ||
+          book.genre === currentGenre;
+
+
+        return matchesSearch && matchesGenre;
+
+      });
+
+
+    catalogGrid.innerHTML =
+      filteredBooks
+        .map(
+          book =>
+            createBookCard(
+              book,
+              book.newBook
+            )
+        )
+        .join("");
+
+
+    if (filteredBooks.length === 0) {
+      emptyMessage.style.display = "block";
+    } else {
+      emptyMessage.style.display = "none";
+    }
+
+  }
+
+
+
+  renderCatalog();
+
+
+
   catalogSearch.addEventListener(
     "input",
-    applyFilters
+    renderCatalog
   );
+
 
 
   headerSearch.addEventListener(
@@ -1487,18 +2232,51 @@
           behavior: "smooth"
         });
 
-      applyFilters();
+      renderCatalog();
 
     }
   );
 
 
-  function filterGenre(
-    genre,
-    clickedButton = null
-  ) {
+
+  function setGenre(genre, button) {
 
     currentGenre = genre;
+
+    document
+      .querySelectorAll(".filter-btn")
+      .forEach(
+        btn =>
+          btn.classList.remove("active")
+      );
+
+
+    if (button) {
+      button.classList.add("active");
+    }
+
+
+    renderCatalog();
+
+  }
+
+
+
+  function selectGenre(genre) {
+
+    currentGenre = genre;
+
+    document
+      .querySelectorAll(".filter-btn")
+      .forEach(btn => {
+
+        btn.classList.toggle(
+          "active",
+          btn.dataset.genre === genre
+        );
+
+      });
+
 
     document
       .getElementById("catalog")
@@ -1507,46 +2285,13 @@
       });
 
 
-    document
-      .querySelectorAll(".filter-btn")
-      .forEach(button => {
-        button.classList.remove("active");
-      });
-
-
-    if (clickedButton) {
-
-      clickedButton.classList.add("active");
-
-    } else {
-
-      document
-        .querySelectorAll(".filter-btn")
-        .forEach(button => {
-
-          const buttonText =
-            button.textContent.trim();
-
-          if (
-            buttonText === genre ||
-            (
-              genre === "Тёмная романтическая комедия" &&
-              buttonText === "Тёмная ромкомедия"
-            )
-          ) {
-            button.classList.add("active");
-          }
-
-        });
-
-    }
-
-    applyFilters();
+    renderCatalog();
 
   }
+
 
 </script>
 
 </body>
+
 </html>
-    
